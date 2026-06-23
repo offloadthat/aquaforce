@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Service Area | {{BIZ_NAME}} Pressure Washing | {{CITY}}, {{STATE}}</title>
+<meta name="description" content="{{BIZ_NAME}} pressure washing serves {{CITY}}, {{STATE}} and the surrounding area. See where we work and get a fast quote by text.">
+<link rel="canonical" href="https://pwash-template.vercel.app/service-area.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="{{BIZ_NAME}} Exterior Cleaning">
+<meta property="og:title" content="Service Area — {{BIZ_NAME}} Pressure Washing"><meta property="og:description" content="Serving {{CITY}} and the greater metro. See where we work.">
+<meta property="og:url" content="https://pwash-template.vercel.app/service-area.html"><meta property="og:image" content="https://pwash-template.vercel.app/img/card-3.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="business:contact_data:street_address" content="{{CITY}}, {{STATE}}"><meta property="business:contact_data:locality" content="{{CITY}}"><meta property="business:contact_data:region" content="{{STATE}}"><meta property="business:contact_data:phone_number" content="{{PHONE_DISPLAY}}"><meta property="business:contact_data:country_name" content="USA">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"AquaForce Exterior Cleaning","image":"https://pwash-template.vercel.app/img/card-3.jpg","telephone":"+13235550147","email":"hello@aquaforcewash.com","url":"https://pwash-template.vercel.app/","priceRange":"$$","areaServed":"Los Angeles Metro, CA","address":{"@type":"PostalAddress","addressLocality":"Los Angeles","addressRegion":"CA","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"07:00","closes":"19:00"},"description":"Professional pressure washing in Los Angeles — driveways, siding, decks and roofs restored in a single visit."}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --accent:#0a73e6; --accent-dark:#0857b4; --cyan:#16c5e3; --ink:#0d1b2a; --ink-2:#33465a; --muted:#6b7c8d; --bg-2:#f1f7fc; --line:rgba(13,27,42,.09);
+    --font-display:'Bebas Neue',sans-serif; --font-cond:'Barlow Condensed',sans-serif; --font-body:'Barlow',sans-serif; }
+  html{ scroll-behavior:auto; }
+  body{ font-family:var(--font-body); color:var(--ink); overflow-x:hidden; background:#fff; }
+  img,video{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  .container{ width:100%; max-width:1180px; margin:0 auto; padding:0 clamp(24px,5vw,56px); }
+
+  /* NAV (light) */
+  .nav{ position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between;
+        padding:0 40px; height:70px; background:rgba(255,255,255,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .nav__logo{ font-family:var(--font-display); font-size:30px; letter-spacing:1px; color:var(--ink); }
+  .nav__logo span{ color:var(--accent); }
+  .nav__links{ display:flex; gap:30px; margin-left:auto; margin-right:24px; }
+  .nav__links a{ font-family:var(--font-cond); font-size:15px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
+  .nav__links a:hover{ color:var(--accent); }
+  .nav__cta{ background:var(--accent); color:#fff!important; padding:10px 22px; border-radius:40px; font-family:var(--font-cond);
+        font-size:14px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .nav__burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; border:none; background:none; }
+  .nav__burger span{ display:block; width:26px; height:2px; background:var(--ink); transition:.3s; }
+  .nav__burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav__burger.open span:nth-child(2){ opacity:0; }
+  .nav__burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ position:fixed; inset:0; z-index:99; background:rgba(255,255,255,.98); backdrop-filter:blur(8px);
+        display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; opacity:0; visibility:hidden; transition:opacity .3s; }
+  .mobile-menu.open{ opacity:1; visibility:visible; }
+  .mobile-menu a{ font-family:var(--font-cond); font-size:27px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); padding:13px; cursor:pointer; }
+  .mobile-menu a:hover{ color:var(--accent); }
+  .mobile-menu .mm-cta{ margin-top:20px; background:var(--accent); color:#fff; padding:14px 32px; border-radius:40px; font-size:18px; }
+  @media(max-width:860px){ .nav__links{ display:none; } .nav__cta{ display:none; } .nav__burger{ display:flex; } .nav{ padding:0 20px; } }
+
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:15px 32px; border-radius:40px; font-family:var(--font-cond);
+        font-size:15px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; border:2px solid transparent; }
+  .btn--cyan{ background:var(--cyan); color:#062b33; }
+  .btn--outline{ background:transparent; border-color:rgba(255,255,255,.55); color:#fff; }
+
+  /* ===== FULL-SCREEN CARD STACK + SPRAY ===== */
+  .track{ position:relative; height:1010vh; }
+  .stage{ position:sticky; top:0; height:100vh; overflow:hidden; }
+  .deck{ position:relative; width:100%; height:100vh; }
+  .card{ position:absolute; inset:0; display:none; will-change:-webkit-mask-image,mask-image; }
+  .card.active{ display:block; }
+  .card__bg{ position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,#ffffff 0%, #eef5fb 100%); }
+  .card__inner{ position:relative; z-index:2; height:100%; display:flex; align-items:center; }
+  .card__no{ position:absolute; top:84px; right:clamp(24px,5vw,56px); z-index:3; font-family:var(--font-display); font-size:20px; color:rgba(13,27,42,.28); letter-spacing:3px; }
+
+  .card__main{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(30px,5vw,70px); align-items:center; width:100%; }
+  @media(max-width:820px){ .card__main{ grid-template-columns:1fr; gap:24px; } }
+  .card__icon{ width:64px; height:64px; border-radius:16px; display:grid; place-items:center;
+        background:rgba(10,115,230,.1); border:1px solid rgba(10,115,230,.22); font-size:32px; margin-bottom:24px; }
+  .card__eyebrow{ font-family:var(--font-cond); font-size:13px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:14px; }
+  .card__left h2{ font-family:var(--font-display); font-size:clamp(34px,4.6vw,66px); line-height:.92; text-transform:uppercase; letter-spacing:.01em; margin-bottom:16px; color:var(--ink); }
+  .card__left h2 em{ color:var(--accent); font-style:normal; }
+  .card__left p{ color:var(--ink-2); font-size:clamp(15px,1.2vw,18px); line-height:1.6; margin-bottom:22px; max-width:44ch; }
+  .card__btn{ display:inline-flex; background:var(--accent); color:#fff; padding:15px 32px; border-radius:100px;
+        font-family:var(--font-cond); font-weight:700; font-size:15px; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; }
+  .card__feats{ display:flex; flex-direction:column; gap:9px; margin-bottom:28px; }
+  .feat{ display:flex; align-items:center; gap:13px; background:var(--bg-2); border:1px solid var(--line); border-radius:12px; padding:12px 16px; }
+  .feat__tick{ width:28px; height:28px; flex:none; border-radius:50%; display:grid; place-items:center; background:rgba(10,115,230,.12); color:var(--accent); font-weight:800; font-size:13px; }
+  .feat__txt{ font-size:clamp(14px,1.05vw,15.5px); color:var(--ink); font-weight:500; line-height:1.35; }
+  .card__media{ height:min(64vh,560px); border-radius:18px; overflow:hidden; box-shadow:0 34px 64px -30px rgba(13,27,42,.45); }
+  .card__media img{ width:100%; height:100%; object-fit:cover; animation:kb 16s ease-in-out infinite alternate; }
+  @keyframes kb{ from{ transform:scale(1.03); } to{ transform:scale(1.12) translate(-1.5%,1.5%); } }
+  .feat{ transition:transform .25s, border-color .25s, background .25s; }
+  .feat:hover{ transform:translateX(6px); border-color:rgba(10,115,230,.4); background:#fff; }
+  .card__btn{ transition:transform .2s ease, background .2s; }
+  .card__btn:hover{ transform:translateY(-2px); background:var(--accent-dark); }
+  .card--flip .card__left{ order:2; } .card--flip .card__media{ order:1; }
+  @media(max-width:820px){
+    .card--flip .card__left{ order:1; } .card--flip .card__media{ order:2; }
+    .card__feats{ gap:7px; margin-bottom:14px; }
+    .card:not(.card--hero) .card__inner{ align-items:stretch; }
+    .card:not(.card--hero) .card__inner > .container{ height:100%; padding-top:84px; padding-bottom:20px; display:flex; flex-direction:column; }
+    .card:not(.card--hero) .card__main{ display:flex; flex-direction:column; gap:16px; flex:1 1 auto; min-height:0; }
+    .card:not(.card--hero) .card__main .card__media{ flex:1 1 auto; height:auto; min-height:120px; }
+  }
+  /* reviews card — no image, just reviews */
+  .reviews-card{ text-align:center; }
+  .reviews-card__head .card__icon{ margin:0 auto 18px; }
+  .reviews-card__head h2{ font-family:var(--font-display); font-size:clamp(36px,5vw,72px); text-transform:uppercase; line-height:.92; color:var(--ink); }
+  .reviews-card__head h2 em{ color:var(--accent); font-style:normal; }
+  .reviews-card__rating{ color:var(--ink-2); font-size:clamp(15px,1.3vw,18px); margin-top:10px; }
+  .reviews-card__rating b{ color:var(--accent); }
+  .reviews-card__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:34px; text-align:left; }
+  @media(max-width:860px){ .reviews-card__grid{ grid-template-columns:1fr; gap:14px; } }
+  .rev{ background:var(--bg-2); border:1px solid var(--line); border-radius:14px; padding:26px; }
+  .rev__stars{ color:#f5a623; font-size:16px; letter-spacing:2px; margin-bottom:12px; }
+  .rev p{ font-size:15px; color:var(--ink); line-height:1.6; margin-bottom:18px; }
+  .rev__name{ font-family:var(--font-cond); font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:8px; }
+  .rev__src{ font-size:9px; background:#4285F4; color:#fff; padding:3px 7px; border-radius:3px; letter-spacing:.04em; }
+
+  /* HERO card 0 — dark video, white text */
+  .card--hero{ color:#fff; }
+  .card--hero .card__bg{ background:#06141f; }
+  .hero__vid{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.06); }
+  .hero__c h1 .grime{ color:#5b7480; transition:color .12s linear; }
+  .hero__meter{ position:absolute; right:clamp(24px,5vw,56px); top:50%; transform:translateY(-50%); z-index:6; text-align:right; pointer-events:none; }
+  .hero__meter-lab{ font-family:var(--font-display); font-size:clamp(34px,4.6vw,66px); letter-spacing:3px; text-transform:uppercase; line-height:1; color:#fff; }
+  .hero__meter-lab.after{ color:var(--cyan); }
+  .hero__meter-bar{ margin:14px 0 0 auto; width:clamp(150px,20vw,260px); height:4px; border-radius:4px; background:rgba(255,255,255,.18); overflow:hidden; }
+  .hero__meter-bar i{ display:block; height:100%; width:0; background:linear-gradient(90deg,#8be9ff,var(--cyan)); transition:width .1s linear; }
+  .hero__meter-pct{ margin-top:10px; font-size:12px; letter-spacing:1px; color:rgba(255,255,255,.72); }
+  @media(max-width:860px){ .hero__meter{ display:none; } }
+  .hero__grade{ position:absolute; inset:0; background:linear-gradient(105deg, rgba(6,20,31,.86) 0%, rgba(6,20,31,.5) 55%, rgba(10,60,120,.2) 100%); }
+  .hero__c .card__eyebrow{ color:var(--cyan); font-size:14px; }
+  .hero__c h1{ font-family:var(--font-display); font-size:clamp(58px,9vw,124px); line-height:.88; text-transform:uppercase; margin-bottom:22px; color:#fff; }
+  .hero__c h1 em{ font-style:normal; color:var(--cyan); }
+  .hero__c p{ font-size:clamp(16px,1.4vw,19px); color:rgba(255,255,255,.85); max-width:520px; margin-bottom:36px; line-height:1.6; }
+  .hero__actions{ display:flex; gap:16px; flex-wrap:wrap; }
+
+  .scrollcue{ position:absolute; left:50%; bottom:64px; transform:translateX(-50%); z-index:6; font-family:var(--font-cond);
+        font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.65); transition:opacity .3s; }
+  .spray{ position:absolute; inset:0; z-index:5; pointer-events:none; }
+  .state{ position:absolute; left:50%; bottom:30px; transform:translateX(-50%); z-index:6; display:flex; gap:8px; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:rgba(13,27,42,.18); transition:.25s; }
+  .dot.on{ background:var(--accent); transform:scale(1.3); }
+
+  /* FOOTER (dark, like original) */
+  .footer{ background:var(--ink); color:#fff; padding:72px 0 38px; }
+  .footer__grid{ display:grid; grid-template-columns:1.6fr repeat(3,1fr); gap:44px; margin-bottom:48px; }
+  .footer__brand .nav__logo{ color:#fff; font-size:32px; display:inline-block; margin-bottom:14px; }
+  .footer__brand p{ font-size:14px; color:rgba(255,255,255,.5); line-height:1.7; max-width:250px; }
+  .footer__col h2{ font-family:var(--font-cond); font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--cyan); margin-bottom:16px; }
+  .footer__col ul{ list-style:none; } .footer__col ul li{ margin-bottom:9px; }
+  .footer__col a, .footer__col p{ font-size:14px; color:rgba(255,255,255,.5); line-height:1.7; }
+  .footer__col a:hover{ color:#fff; }
+  .footer__phone{ font-family:var(--font-cond); font-size:21px; font-weight:700; color:#fff!important; display:block; margin-bottom:8px; }
+  .footer__bottom{ border-top:1px solid rgba(255,255,255,.12); padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:rgba(255,255,255,.72); }
+  @media(max-width:820px){ .footer__grid{ grid-template-columns:1fr 1fr; gap:28px; } }
+  /* cities-we-serve card */
+  .areas-card{ text-align:center; }
+  .areas-card .card__icon{ margin:0 auto 18px; }
+  .areas-card h2{ font-family:var(--font-display); font-size:clamp(34px,4.6vw,60px); text-transform:uppercase; line-height:.92; color:var(--ink); }
+  .areas-card h2 em{ color:var(--accent); font-style:normal; }
+  .areas-card p{ color:var(--ink-2); max-width:52ch; margin:10px auto 26px; font-size:clamp(15px,1.2vw,17px); line-height:1.6; }
+  .areas-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+  .area-link{ font-family:var(--font-cond); font-weight:700; font-size:15px; letter-spacing:.03em; color:var(--accent); background:var(--bg-2); border:1px solid var(--line); border-radius:30px; padding:11px 18px; transition:.15s; }
+  .area-link:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  /* geo-fence "check my address" modal */
+  .geo-modal{ position:fixed; inset:0; z-index:200; background:rgba(6,20,31,.55); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; padding:20px; }
+  .geo-modal.open{ display:flex; }
+  .geo-card{ background:#fff; border-radius:20px; max-width:470px; width:100%; padding:34px 28px 26px; position:relative; box-shadow:0 40px 90px -22px rgba(13,27,42,.55); text-align:center; }
+  .geo-x{ position:absolute; top:13px; right:16px; background:none; border:none; font-size:26px; color:var(--muted); cursor:pointer; line-height:1; }
+  .geo-pill{ display:inline-block; background:#ff9500; color:#0d1b2a; font-family:var(--font-cond); font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:4px 11px; border-radius:20px; margin-bottom:12px; }
+  .geo-card h3{ font-family:var(--font-display); font-size:clamp(30px,5vw,40px); text-transform:uppercase; line-height:1; color:var(--ink); }
+  .geo-card h3 em{ color:var(--accent); font-style:normal; }
+  .geo-card > p{ color:var(--ink-2); font-size:15px; margin:8px auto 18px; max-width:38ch; }
+  .geo-row{ display:flex; gap:8px; }
+  .geo-row input{ flex:1; border:1.5px solid var(--line); border-radius:12px; padding:13px 15px; font-family:var(--font-body); font-size:15px; color:var(--ink); }
+  .geo-row input:focus{ outline:none; border-color:var(--accent); }
+  .geo-row .btn{ flex:none; padding:13px 22px; }
+  .geo-result{ margin-top:16px; text-align:left; }
+  .geo-ok{ background:rgba(16,185,129,.1); border:1px solid rgba(16,185,129,.32); color:#0c7a52; border-radius:14px; padding:15px 17px; font-size:15px; line-height:1.5; }
+  .geo-no{ background:#fff4ec; border:1px solid #ffd9b0; color:#8a4b00; border-radius:14px; padding:15px 17px; font-size:14.5px; line-height:1.55; }
+  .geo-cta{ display:flex; gap:9px; margin-top:13px; flex-wrap:wrap; }
+  .geo-cta a{ display:inline-flex; background:var(--accent); color:#fff; padding:11px 18px; border-radius:100px; font-family:var(--font-cond); font-weight:700; font-size:14px; letter-spacing:.05em; text-transform:uppercase; }
+  .geo-cta a.alt{ background:#fff; color:var(--accent); border:1.5px solid var(--accent); }
+  .geo-foot{ font-size:12px; color:var(--muted); margin-top:14px; }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav__logo">{{BIZ_NAME}}</a>
+    <div class="nav__links">
+      <a href="/#c1">Services</a><a href="gallery.html">Gallery</a><a href="service-area.html">Service area</a><a href="/#c5">Reviews</a><a href="quote.html">Get a quote</a><a href="/#c6">Contact</a>
+    </div>
+    <a href="tel:{{PHONE_RAW}}" class="nav__cta">&#9742; {{PHONE_DISPLAY}}</a>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/#c1">Services</a><a href="gallery.html">Gallery</a><a href="service-area.html">Service area</a><a href="/#c5">Reviews</a><a href="quote.html">Get a quote</a><a href="/#c6">Contact</a>
+    <a href="tel:{{PHONE_RAW}}" class="mm-cta">&#9742; {{PHONE_DISPLAY}}</a>
+  </div>
+
+  <div class="track" id="track">
+    <div class="stage">
+      <div class="deck" id="deck">
+        <canvas class="spray" id="spray"></canvas>
+      </div>
+      <div class="scrollcue" id="scrollcue">↓ scroll &mdash; watch it wash</div>
+      <div class="state"><div class="dots" id="dots"></div></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <span class="nav__logo">{{BIZ_NAME}}</span>
+          <p>Professional exterior cleaning for homes and businesses across {{CITY}}, {{STATE}}.</p>
+        </div>
+        <div class="footer__col"><h2>Services</h2><ul><li><a href="quote.html">Driveways &amp; concrete</a></li><li><a href="quote.html">House &amp; siding</a></li><li><a href="quote.html">Decks, roofs &amp; gutters</a></li></ul></div>
+        <div class="footer__col"><h2>Company</h2><ul><li><a href="service-area.html">About us</a></li><li><a href="gallery.html">Our work</a></li><li><a href="/#c5">Reviews</a></li></ul></div>
+        <div class="footer__col"><h2>Contact</h2><a href="tel:{{PHONE_RAW}}" class="footer__phone">{{PHONE_DISPLAY}}</a><a href="mailto:hello@aquaforcewash.com" class="footer__phone" style="font-size:14px;font-weight:600">hello@aquaforcewash.com</a><p>{{CITY}}, {{STATE}}<br>Open 7 days, 7am to 7pm</p></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 {{BIZ_NAME}} Exterior Cleaning. Licensed and insured.</p><p>Reclaim your weekend.</p></div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const CARDS = [
+      { ic:'📍', eb:'Where we work', t:'{{CITY}} &amp; the<br><em>surrounding area</em>',
+        d:'Wherever you are in and around {{CITY}}, {{STATE}}, a {{BIZ_NAME}} crew is close by — and we keep the same prices and the same guarantee in every neighborhood we serve.',
+        li:['{{CITY}} and every surrounding neighborhood','Neighboring towns within ~30 miles','Gated communities &amp; HOAs welcome'] },
+      { ic:'🏠', eb:'Who we serve', t:'Homes &amp;<br><em>businesses</em>',
+        d:'From a single driveway to a full commercial lot, we bring the right pressure and the right detergents for the surface in front of us.',
+        li:['Single-family homes &amp; townhouses','Apartments, condos &amp; HOA common areas','Storefronts, lots &amp; light commercial'] },
+      { ic:'⚡', eb:'How we work', t:'Fast,<br><em>and local</em>',
+        d:'We are based right here, not three towns over. That means quick quotes, same-week dates, and a crew that knows the area.',
+        li:['Same-week scheduling, most weeks','Local crew — real, quick response','Free quotes by text in 60 seconds'] },
+      { type:'areas', ic:'🗺️', eb:'Cities we serve', t:'Pick your<br><em>city</em>',
+        d:'Tap your city for local pricing, booking and before/afters near you. Don&rsquo;t see yours? We&rsquo;re probably still close by &mdash; just ask.',
+        cities:[['Santa Monica','santa-monica'],['Pasadena','pasadena'],['Long Beach','long-beach'],['Glendale','glendale'],['Burbank','burbank'],['Beverly Hills','beverly-hills'],['Culver City','culver-city'],['Torrance','torrance'],['Inglewood','inglewood'],['Manhattan Beach','manhattan-beach']] },
+      { ic:'📞', eb:'Not sure?', t:'Don&rsquo;t see<br><em>your area?</em>',
+        d:'We are expanding all the time. Text us your address and a photo — we will tell you on the spot whether you are covered, and what it costs.',
+        li:['Text a photo + your address','Get a real price in 60 seconds','We confirm we cover you — no run-around'] },
+    ];
+    const track=document.getElementById('track'), deck=document.getElementById('deck');
+    const cv=document.getElementById('spray'), ctx=cv.getContext('2d');
+    const dotsW=document.getElementById('dots'), scrollcue=document.getElementById('scrollcue');
+
+    const hero=document.createElement('div'); hero.className='card card--hero active';
+    hero.innerHTML='<div class="card__bg">'+
+        '<video class="hero__vid" id="heroScrub" muted playsinline preload="auto"><source src="hero-ai-v2-seek.mp4" type="video/mp4"><source src="hero-ai-v2.mp4" type="video/mp4"></video>'+
+        '<div class="hero__grade"></div></div>'+
+      '<div class="card__inner"><div class="container hero__c">'+
+        '<span class="card__eyebrow">Service area</span>'+
+        '<h1><span class="grime" id="grimeWord">Serving {{CITY}}</span><br><em>&amp; the whole area.</em></h1>'+
+        '<p>From {{CITY}} to every surrounding town, {{BIZ_NAME}} brings the right pressure to your property — same prices, same guarantee, wherever you are.</p>'+
+        '<div class="hero__actions"><a href="#" class="btn btn--cyan" id="geoOpen">Check my address</a><a href="/" class="btn btn--outline">Back to home</a></div>'+
+      '</div></div>'+
+      '<div class="hero__meter"><div class="hero__meter-lab" id="heroLab">Before</div><div class="hero__meter-bar"><i id="heroFill"></i></div><div class="hero__meter-pct" id="heroPct">Scroll to clean</div></div>';
+    deck.insertBefore(hero, cv);
+    const heroVid=hero.querySelector('#heroScrub'), grimeWord=hero.querySelector('#grimeWord');
+    const heroFill=hero.querySelector('#heroFill'), heroLab=hero.querySelector('#heroLab'), heroPct=hero.querySelector('#heroPct');
+    heroVid.pause();
+    let scrubReady=false, scrubDur=4.8, scrubCur=0;
+    function primeScrub(){ if(scrubReady) return; scrubReady=true; scrubDur=Math.min(4.8,(heroVid.duration||7)); heroVid.play().then(()=>heroVid.pause()).catch(()=>{}); }
+    heroVid.addEventListener('loadedmetadata', primeScrub);
+    heroVid.addEventListener('loadeddata', primeScrub);
+    setTimeout(()=>{ if(heroVid.readyState>=1) primeScrub(); }, 1400);
+
+    const els=[hero];
+    const N=CARDS.length+1;
+    CARDS.forEach((c,i)=>{
+      const card=document.createElement('div'); card.className='card'+(c.type!=='reviews' && i%2===1?' card--flip':'');
+      let inner;
+      if(c.type==='reviews'){
+        inner='<div class="container reviews-card">'+
+          '<div class="reviews-card__head"><div class="card__icon">'+c.ic+'</div>'+
+            '<span class="card__eyebrow">'+c.eb+'</span><h2>'+c.t+'</h2>'+
+            '<p class="reviews-card__rating">Rated <b>'+c.rating+'&#9733;</b> by '+c.count+' {{CITY}} homeowners</p></div>'+
+          '<div class="reviews-card__grid">'+c.reviews.map(r=>
+            '<div class="rev"><div class="rev__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;'+r.q+'&rdquo;</p>'+
+            '<div class="rev__name">'+r.n+'<span class="rev__src">Google</span></div></div>').join('')+'</div>'+
+          '<div style="text-align:center;margin-top:32px"><a class="card__btn" href="quote.html">Get my free quote →</a></div></div>';
+      } else if(c.type==='areas'){
+        inner='<div class="container areas-card">'+
+          '<div class="card__icon">'+c.ic+'</div>'+
+          '<span class="card__eyebrow">'+c.eb+'</span><h2>'+c.t+'</h2><p>'+c.d+'</p>'+
+          '<div class="areas-grid">'+c.cities.map(ci=>'<a class="area-link" href="city-'+ci[1]+'.html">'+ci[0]+'</a>').join('')+'</div>'+
+        '</div>';
+      } else {
+        inner='<div class="container"><div class="card__main">'+
+          '<div class="card__left"><div class="card__icon">'+c.ic+'</div>'+
+            '<span class="card__eyebrow">'+c.eb+'</span><h2>'+c.t+'</h2><p>'+c.d+'</p>'+
+            '<div class="card__feats">'+c.li.map(x=>'<div class="feat"><span class="feat__tick">✓</span><span class="feat__txt">'+x+'</span></div>').join('')+'</div>'+
+            '<a class="card__btn" href="quote.html">Get my free quote →</a></div>'+
+          '<div class="card__media"><img src="'+(c.img||('img/card-'+(i+1)+'.jpg'))+'" alt="" loading="lazy"></div>'+
+        '</div></div>';
+      }
+      card.innerHTML='<div class="card__bg"></div><div class="card__no">0'+(i+2)+' / 0'+N+'</div><div class="card__inner">'+inner+'</div>';
+      deck.insertBefore(card, cv);
+      els.push(card);
+    });
+    for(let i=0;i<N;i++){ const d=document.createElement('span'); d.className='dot'+(i===0?' on':''); dotsW.appendChild(d); }
+    track.style.height=(N*140)+'vh';   // scale scroll length to the number of cards
+
+    // nav + mobile menu — links jump to their card
+    const burger=document.getElementById('burger'), mobileMenu=document.getElementById('mobileMenu');
+    function goToCard(idx, smooth){ const total=track.offsetHeight-innerHeight; const p=Math.min(0.999,(idx+0.55)/N);
+      window.scrollTo({top:Math.round(track.offsetTop + p*total), behavior:(smooth===false?'auto':'smooth')}); }
+    function closeMenu(){ if(burger) burger.classList.remove('open'); if(mobileMenu) mobileMenu.classList.remove('open'); document.body.style.overflow=''; }
+    if(burger) burger.addEventListener('click', ()=>{ const o=mobileMenu.classList.toggle('open'); burger.classList.toggle('open',o); document.body.style.overflow=o?'hidden':''; });
+    // nav links: same-page #cN -> smooth scroll to that card; other pages -> normal navigation
+    function cardFromHref(href){ try{ const u=new URL(href, location.href); const m=u.hash.match(/^#c(\d+)$/); if(m && u.pathname===location.pathname) return +m[1]; }catch(e){} return null; }
+    document.querySelectorAll('.nav a[href], .mobile-menu a[href]').forEach(a=>{
+      a.addEventListener('click',(e)=>{ const c=cardFromHref(a.getAttribute('href')); if(c!=null){ e.preventDefault(); goToCard(c); } closeMenu(); });
+    });
+    { const hm=location.hash.match(/^#c(\d+)$/); if(hm) requestAnimationFrame(()=>requestAnimationFrame(()=>goToCard(+hm[1], false))); }
+
+    let curDpr=0, curCW=0, curCH=0;
+    function syncCanvas(){
+      const r=deck.getBoundingClientRect(); const dpr=Math.min(devicePixelRatio||1,2);
+      const cw=Math.max(1,Math.round(r.width)), ch=Math.max(1,Math.round(r.height));
+      if(cw!==curCW||ch!==curCH||dpr!==curDpr){
+        cv.style.width=cw+'px'; cv.style.height=ch+'px'; cv.width=Math.round(cw*dpr); cv.height=Math.round(ch*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0); curCW=cw; curCH=ch; curDpr=dpr;
+      }
+    }
+    function scrollProgress(){ const total=track.offsetHeight-innerHeight;
+      const s=Math.min(Math.max(-track.getBoundingClientRect().top,0),total); return total>0? s/total:0; }
+    function maskIn(X){  const f=100-X; return 'linear-gradient(to bottom, rgba(0,0,0,0) '+(f-2)+'%, #000 '+(f+2)+'%)'; }
+    function maskOut(X){ const f=100-X; return 'linear-gradient(to bottom, #000 '+(f-2)+'%, rgba(0,0,0,0) '+(f+2)+'%)'; }
+
+    const IN=0.40, HOLD_END=0.80;
+    let particles=[], tick=0;
+    // light=true on white cards -> blue water, normal blend; light=false on the dark hero -> white water, additive
+    function drawJet(frontY,washing,W,h,light){
+      ctx.clearRect(0,0,W,h); tick++;
+      const PCOL = light ? '26,140,205' : '232,247,255';
+      const LCOL = light ? '20,165,220' : '236,249,255';
+      const HCOL = light ? '24,150,215' : '246,253,255';
+      const blend = light ? 'source-over' : 'lighter';
+      const pA = light ? 0.85 : 0.85, lA0 = light ? 0.45 : 0.4, lA1 = light ? 0.85 : 0.6;
+      if(frontY>0 && frontY<h){
+        const sg=ctx.createLinearGradient(0,frontY,0,Math.min(h,frontY+h*0.4));
+        sg.addColorStop(0, light?'rgba(70,150,205,0.12)':'rgba(120,195,225,0.12)'); sg.addColorStop(1,'rgba(120,195,225,0)');
+        ctx.fillStyle=sg; ctx.fillRect(0,frontY,W,h-frontY);
+      }
+      let fvel=0; if(washing){ if(drawJet._pf!=null) fvel=frontY-drawJet._pf; drawJet._pf=frontY; } else { drawJet._pf=null; }
+      const speedMag=Math.min(40, Math.abs(fvel));
+      if(washing && frontY>0 && frontY<h){
+        const cx=W/2, sc=W/1000, gap=W*0.29;
+        const EM=Math.max(0, Math.min(Math.round(80 + speedMag*2.4), 2200 - particles.length));
+        for(let i=0;i<EM;i++){
+          const side=Math.random()<0.5?-1:1; const va=(Math.random()-0.5)*0.6; const spd=(16+Math.random()*42)*sc;
+          particles.push({ x:cx+side*gap+(Math.random()-0.5)*8, y:frontY+(Math.random()-0.5)*4,
+            vx:side*Math.cos(va)*spd, vy:Math.sin(va)*5, life:0.55+Math.random()*0.45, r:0.7+Math.random()*1.9 });
+        }
+        const gl=Math.max(0.001,(cx-gap)/W), gr=Math.min(0.999,(cx+gap)/W);
+        const cg=ctx.createLinearGradient(0,0,W,0);
+        cg.addColorStop(0,'rgba('+HCOL+',0)'); cg.addColorStop(gl,'rgba('+HCOL+',0.7)');
+        cg.addColorStop(0.5,'rgba('+HCOL+',0.08)'); cg.addColorStop(gr,'rgba('+HCOL+',0.7)'); cg.addColorStop(1,'rgba('+HCOL+',0)');
+        ctx.fillStyle=cg; ctx.fillRect(0,frontY-6,W,12);
+      }
+      ctx.globalCompositeOperation=blend;
+      for(const p of particles){
+        p.x+=p.vx; p.y+=p.vy; p.vy+=0.04; p.vx*=0.99; p.vy*=0.97; p.life-=0.022;
+        const a=Math.max(0,p.life); if(a<=0) continue;
+        ctx.fillStyle='rgba('+PCOL+','+(a*pA)+')'; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill();
+      }
+      if(washing && frontY>0 && frontY<h){
+        const LN=Math.round(W/3.5);
+        for(let i=0;i<LN;i++){
+          const ph=i*2.4;
+          const x=((i+0.5)/LN)*W + Math.sin(tick*0.13+ph)*7 + (Math.random()-0.5)*5;
+          const y=frontY + Math.sin(tick*0.30+ph*1.7)*3 + (Math.random()-0.5)*18;
+          const r=0.8+Math.random()*2.2;
+          ctx.fillStyle='rgba('+LCOL+','+(lA0+(lA1-lA0)*Math.random())+')'; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill();
+        }
+      }
+      ctx.globalCompositeOperation='source-over';
+      particles=particles.filter(p=>p.life>0 && p.x>-40 && p.x<W+40 && p.y<h+40 && p.y>-60);
+    }
+
+    function frame(){
+      const p=scrollProgress();
+      const seg=Math.min(N-1, Math.floor(p*N));
+      const local=Math.min(1, p*N - seg);
+      // active card on top + the PREVIOUS card behind it, so the wash-in reveals over it — no blank between cards
+      els.forEach((e,i)=>{
+        if(i===seg){ e.classList.add('active'); e.style.zIndex='2'; }
+        else if(i===seg-1){ e.classList.add('active'); e.style.zIndex='1'; e.style.webkitMaskImage=''; e.style.maskImage=''; }
+        else { e.classList.remove('active'); }
+      });
+      dotsW.querySelectorAll('.dot').forEach((dt,i)=> dt.classList.toggle('on', i===seg));
+      scrollcue.style.opacity = (seg===0 && local<0.35) ? '1' : '0';
+      syncCanvas();
+      const W=cv.clientWidth, h=cv.clientHeight, card=els[seg];
+      const isHero=(seg===0);
+      if(isHero && scrubReady){
+        const tgt=local*scrubDur; scrubCur+=(tgt-scrubCur)*0.22; if(Math.abs(tgt-scrubCur)<0.012) scrubCur=tgt;
+        if(heroVid.readyState>=2 && !heroVid.seeking){ try{ heroVid.currentTime=scrubCur; }catch(e){} }
+        const pct=Math.round(local*100); heroFill.style.width=pct+'%';
+        if(local<0.5){ heroLab.textContent='Before'; heroLab.classList.remove('after'); heroPct.textContent='Scroll to clean'; }
+        else { heroLab.textContent='After'; heroLab.classList.add('after'); heroPct.textContent=(pct>=98?'Spotless':pct+'% cleaned'); }
+        const cl=Math.max(0,Math.min(1,(local-0.3)/0.45));
+        grimeWord.style.color='rgb('+Math.round(91+164*cl)+','+Math.round(116+139*cl)+','+Math.round(128+127*cl)+')';
+      }
+      let X=0, washing=false, m='';
+      if(local<IN && !isHero){ X=(local/IN)*100; m=maskIn(X); washing=true; }   // wash IN over the previous card, then hold (no wash-out)
+      card.style.webkitMaskImage=m; card.style.maskImage=m;
+      // scroll parallax — content & photo drift at different rates so the card never feels frozen
+      const left=card.querySelector('.card__left'), media=card.querySelector('.card__media'), hc=card.querySelector('.hero__c');
+      if(left) left.style.transform='translateY('+((local-0.45)*-34)+'px)';
+      if(media) media.style.transform='translateY('+((local-0.45)*24)+'px)';
+      if(hc) hc.style.transform='translateY('+((local-0.45)*-30)+'px)';
+      drawJet(washing?(1-X/100)*h:-1, washing, W, h, !isHero);   // blue water on white cards, white on the dark hero
+    }
+    (function loop(){ frame(); requestAnimationFrame(loop); })();
+
+    // hero is now scroll-scrubbed (crossfade slideshow removed)
+  })();
+  </script>
+
+  <!-- geo-fence: "Check my address" service-area checker (demo) -->
+  <div class="geo-modal" id="geoModal" role="dialog" aria-modal="true" aria-label="Check your address">
+    <div class="geo-card">
+      <button class="geo-x" id="geoX" aria-label="Close">&times;</button>
+      <span class="geo-pill">Demo</span>
+      <h3>Are we in <em>your area?</em></h3>
+      <p>Drop in your address or ZIP &mdash; we&rsquo;ll check our service area instantly.</p>
+      <div class="geo-row">
+        <input id="geoInput" placeholder="Address or ZIP code" aria-label="Address or ZIP code" autocomplete="postal-code">
+        <button class="btn btn--cyan" id="geoCheck">Check</button>
+      </div>
+      <div class="geo-result" id="geoResult"></div>
+      <p class="geo-foot">Demo check against our greater-LA service area. On a live site this can use the visitor&rsquo;s real location or address geocoding.</p>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var SERVED=['santa monica','pasadena','long beach','glendale','burbank','beverly hills','culver city','torrance','inglewood','manhattan beach','los angeles','hollywood','west hollywood','venice','marina del rey','el segundo','hawthorne','gardena','carson','redondo beach','hermosa beach','compton','downey','whittier','alhambra','monterey park','arcadia','sherman oaks','van nuys','north hollywood','studio city','encino','woodland hills','brentwood','lakewood','bellflower','norwalk','montebello','lynwood','south gate','huntington park','lomita','lawndale','san pedro','wilmington','playa del rey','westchester','mar vista','palms','cheviot hills'];
+    var gm=document.getElementById('geoModal'), gOpen=document.getElementById('geoOpen'), gX=document.getElementById('geoX'),
+        gIn=document.getElementById('geoInput'), gChk=document.getElementById('geoCheck'), gRes=document.getElementById('geoResult');
+    function open(e){ if(e) e.preventDefault(); gm.classList.add('open'); setTimeout(function(){ try{gIn.focus();}catch(_){}; },90); }
+    function close(){ gm.classList.remove('open'); }
+    if(gOpen) gOpen.addEventListener('click', open);
+    if(gX) gX.addEventListener('click', close);
+    gm.addEventListener('click', function(e){ if(e.target===gm) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    function tc(s){ return s.replace(/\b\w/g, function(c){ return c.toUpperCase(); }); }
+    function check(){
+      var v=(gIn.value||'').trim(); if(!v){ gRes.innerHTML=''; return; }
+      var t=v.toLowerCase();
+      var zm=v.match(/\b(\d{5})\b/); var zip=zm?zm[1]:null;
+      var zipOk=zip && /^9(0[0-8]\d\d|1[0-8]\d\d)$/.test(zip);
+      var hit=null; for(var i=0;i<SERVED.length;i++){ if(t.indexOf(SERVED[i])!==-1){ hit=SERVED[i]; break; } }
+      if(zipOk||hit){
+        var area=hit?tc(hit):('ZIP '+zip);
+        var enc=encodeURIComponent(v);   // carry the checked address into the quote tool
+        gRes.innerHTML='<div class="geo-ok"><b>&#10003; Good news &mdash; you&rsquo;re in our service area!</b><br>We cover '+area+' and the surrounding LA metro, 7 days a week.'+
+          '<div class="geo-cta"><a href="quote.html?addr='+enc+'">Get my quote &rarr;</a><a class="alt" href="quote.html?addr='+enc+'#book">Book a visit</a></div></div>';
+      } else {
+        gRes.innerHTML='<div class="geo-no"><b>Hmm &mdash; &ldquo;'+v.replace(/</g,"&lt;")+'&rdquo; looks just outside our usual area.</b><br>We&rsquo;re expanding all the time. Call <a href="tel:+13235550147" style="color:inherit;text-decoration:underline">(323) 555-0147</a> or text your address and we&rsquo;ll confirm on the spot.</div>';
+      }
+    }
+    if(gChk) gChk.addEventListener('click', check);
+    if(gIn) gIn.addEventListener('keydown', function(e){ if(e.key==='Enter') check(); });
+  })();
+  </script>
+  <script src="nav-cities.js" defer></script>
+  <script src="chat.js" defer></script>
+</body>
+</html>

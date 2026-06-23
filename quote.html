@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Instant Quote & Booking | {{BIZ_NAME}} | {{CITY}}</title>
+<meta name="description" content="Get an instant pressure-washing quote and book online in {{CITY}}, {{STATE}}. Pick your services, see your price, and reserve a time — in under a minute.">
+<link rel="canonical" href="https://pwash-template.vercel.app/quote.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="{{BIZ_NAME}} Exterior Cleaning">
+<meta property="og:title" content="Instant Quote & Online Booking — {{BIZ_NAME}}"><meta property="og:description" content="Get an instant pressure-washing quote and book online in {{CITY}} in under a minute.">
+<meta property="og:url" content="https://pwash-template.vercel.app/quote.html"><meta property="og:image" content="https://pwash-template.vercel.app/img/card-3.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="business:contact_data:street_address" content="{{CITY}}, {{STATE}}"><meta property="business:contact_data:locality" content="{{CITY}}"><meta property="business:contact_data:region" content="{{STATE}}"><meta property="business:contact_data:phone_number" content="{{PHONE_DISPLAY}}"><meta property="business:contact_data:country_name" content="USA">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"AquaForce Exterior Cleaning","image":"https://pwash-template.vercel.app/img/card-3.jpg","telephone":"+13235550147","email":"hello@aquaforcewash.com","url":"https://pwash-template.vercel.app/","priceRange":"$$","areaServed":"Los Angeles Metro, CA","address":{"@type":"PostalAddress","addressLocality":"Los Angeles","addressRegion":"CA","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"07:00","closes":"19:00"},"description":"Professional pressure washing in Los Angeles — driveways, siding, decks and roofs restored in a single visit."}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --accent:#0a73e6; --accent-dark:#0857b4; --cyan:#16c5e3; --ink:#0d1b2a; --ink-2:#33465a; --muted:#54616e; --bg-2:#f1f7fc; --line:rgba(13,27,42,.10);
+    --font-display:'Bebas Neue',sans-serif; --font-cond:'Barlow Condensed',sans-serif; --font-body:'Barlow',sans-serif; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--font-body); color:var(--ink); background:#fff; overflow-x:hidden; }
+  img{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  .container{ width:100%; max-width:1100px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+
+  /* NAV (shared) */
+  .nav{ position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between;
+        padding:0 40px; height:70px; background:rgba(255,255,255,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .nav__logo{ font-family:var(--font-display); font-size:30px; letter-spacing:1px; color:var(--ink); }
+  .nav__logo span{ color:var(--accent); }
+  .nav__links{ display:flex; gap:26px; margin-left:auto; margin-right:22px; }
+  .nav__links a{ font-family:var(--font-cond); font-size:15px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); }
+  .nav__links a:hover, .nav__links a.on{ color:var(--accent); }
+  .nav__cta{ background:var(--accent); color:#fff!important; padding:10px 22px; border-radius:40px; font-family:var(--font-cond);
+        font-size:14px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .nav__burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; border:none; background:none; }
+  .nav__burger span{ display:block; width:26px; height:2px; background:var(--ink); transition:.3s; }
+  .nav__burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav__burger.open span:nth-child(2){ opacity:0; }
+  .nav__burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ position:fixed; inset:0; z-index:99; background:rgba(255,255,255,.98); backdrop-filter:blur(8px);
+        display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; opacity:0; visibility:hidden; transition:opacity .3s; }
+  .mobile-menu.open{ opacity:1; visibility:visible; }
+  .mobile-menu a{ font-family:var(--font-cond); font-size:26px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); padding:12px; }
+  .mobile-menu .mm-cta{ margin-top:18px; background:var(--accent); color:#fff; padding:14px 32px; border-radius:40px; font-size:18px; }
+  @media(max-width:900px){ .nav__links{ display:none; } .nav__cta{ display:none; } .nav__burger{ display:flex; } .nav{ padding:0 20px; } }
+
+  /* page background: droplet motif */
+  .page{ position:relative; padding-top:70px; background:linear-gradient(180deg,#ffffff 0%, #eef5fb 100%); min-height:100vh; }
+  .page::before{ content:''; position:fixed; inset:70px 0 0 0; z-index:0; background:url('img/droplets.svg') repeat; background-size:420px 420px; opacity:.5; pointer-events:none; }
+  .wrap{ position:relative; z-index:1; }
+
+  /* demo notice */
+  .demo-bar{ display:flex; align-items:center; gap:10px; justify-content:center; flex-wrap:wrap; text-align:center;
+        background:#fff7ec; border:1px solid #ffd699; color:#8a5a00; border-radius:14px; padding:11px 18px; margin-top:22px; font-size:13.5px; font-weight:600; }
+  .demo-tag{ background:#ff9500; color:#0d1b2a; font-family:var(--font-cond); font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; padding:4px 11px; border-radius:30px; }
+
+  /* hero header */
+  .qhead{ text-align:center; padding:54px 0 8px; }
+  .qhead .eyebrow{ font-family:var(--font-cond); font-size:13px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+  .qhead h1{ font-family:var(--font-display); font-size:clamp(40px,6.5vw,84px); line-height:.92; text-transform:uppercase; margin:10px 0 12px; }
+  .qhead h1 em{ color:var(--accent); font-style:normal; }
+  .qhead p{ color:var(--ink-2); font-size:clamp(15px,1.3vw,18px); max-width:56ch; margin:0 auto; line-height:1.6; }
+  .steps{ display:flex; justify-content:center; gap:10px; margin:26px 0 8px; flex-wrap:wrap; }
+  .steps span{ font-family:var(--font-cond); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+        background:#fff; border:1px solid var(--line); padding:8px 16px; border-radius:30px; }
+  .steps span b{ color:var(--accent); }
+
+  /* generic panel/card */
+  .panel{ background:#fff; border:1px solid var(--line); border-radius:20px; box-shadow:0 30px 60px -38px rgba(13,27,42,.4); padding:clamp(22px,3.4vw,40px); }
+  .sec{ padding:34px 0; }
+  .sec__title{ font-family:var(--font-display); font-size:clamp(26px,3.4vw,44px); text-transform:uppercase; letter-spacing:.01em; line-height:1; margin-bottom:6px; }
+  .sec__title em{ color:var(--accent); font-style:normal; }
+  .sec__sub{ color:var(--ink-2); font-size:15px; margin-bottom:22px; }
+
+  /* ===== QUOTE GENERATOR ===== */
+  .quote-grid{ display:grid; grid-template-columns:1.35fr .9fr; gap:26px; align-items:start; }
+  @media(max-width:860px){ .quote-grid{ grid-template-columns:1fr; } }
+  .svc{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:520px){ .svc{ grid-template-columns:1fr; } }
+  .svc__item{ border:1.5px solid var(--line); border-radius:14px; padding:14px 15px; cursor:pointer; transition:border-color .15s, background .15s, box-shadow .15s; background:#fff; }
+  .svc__item:hover{ border-color:rgba(10,115,230,.4); }
+  .svc__item.sel{ border-color:var(--accent); background:#f3f9ff; box-shadow:0 0 0 1px var(--accent); }
+  .svc__top{ display:flex; align-items:center; gap:11px; }
+  .svc__ic{ width:40px; height:40px; flex:none; border-radius:11px; display:grid; place-items:center; font-size:21px; background:rgba(10,115,230,.1); border:1px solid rgba(10,115,230,.2); }
+  .svc__name{ font-family:var(--font-cond); font-weight:700; font-size:16px; letter-spacing:.01em; line-height:1.1; }
+  .svc__check{ margin-left:auto; width:22px; height:22px; border-radius:50%; border:1.5px solid var(--line); display:grid; place-items:center; color:#fff; font-size:12px; font-weight:800; }
+  .svc__item.sel .svc__check{ background:var(--accent); border-color:var(--accent); }
+  .svc__sizes{ display:none; gap:7px; margin-top:12px; flex-wrap:wrap; }
+  .svc__item.sel .svc__sizes{ display:flex; }
+  .size{ font-family:var(--font-cond); font-weight:700; font-size:12.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-2);
+        background:var(--bg-2); border:1px solid var(--line); border-radius:30px; padding:7px 13px; cursor:pointer; }
+  .size.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  .cond{ display:flex; gap:10px; margin-top:8px; }
+  .cond button{ flex:1; font-family:var(--font-cond); font-weight:700; font-size:14px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-2);
+        background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:12px; cursor:pointer; transition:.15s; }
+  .cond button small{ display:block; font-size:11px; font-weight:600; color:var(--muted); letter-spacing:0; text-transform:none; margin-top:2px; }
+  .cond button.on{ border-color:var(--accent); background:#f3f9ff; color:var(--accent-dark); }
+  .field-label{ font-family:var(--font-cond); font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink); margin:22px 0 10px; display:block; }
+
+  /* estimate panel (sticky) */
+  .estimate{ position:sticky; top:90px; }
+  .estimate__lab{ font-family:var(--font-cond); font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .estimate__num{ font-family:var(--font-display); font-size:clamp(44px,7vw,72px); line-height:.95; color:var(--ink); margin:4px 0 2px; }
+  .estimate__num span{ color:var(--accent); }
+  .estimate__note{ font-size:13px; color:var(--muted); margin-bottom:16px; }
+  .estimate__lines{ list-style:none; margin:14px 0; border-top:1px dashed var(--line); padding-top:14px; min-height:30px; }
+  .estimate__lines li{ display:flex; justify-content:space-between; font-size:14px; color:var(--ink-2); padding:5px 0; }
+  .estimate__lines li b{ color:var(--ink); font-weight:700; }
+  .estimate__empty{ color:var(--muted); font-size:14px; font-style:italic; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:15px 22px; border-radius:40px; border:none; cursor:pointer;
+        font-family:var(--font-cond); font-size:16px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; transition:transform .15s, background .15s; }
+  .btn--primary{ background:var(--accent); color:#fff; } .btn--primary:hover{ background:var(--accent-dark); transform:translateY(-2px); }
+  .btn--ghost{ background:#fff; color:var(--accent); border:1.5px solid var(--accent); margin-top:10px; }
+  .btn--ghost:hover{ background:#f3f9ff; }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
+  .ai-note{ font-size:12px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.5; }
+
+  /* ===== BOOKING CALENDAR ===== */
+  #book{ scroll-margin-top:84px; }
+  .cal__dates{ display:flex; gap:9px; overflow-x:auto; padding:4px 2px 12px; scrollbar-width:none; }
+  .cal__dates::-webkit-scrollbar{ display:none; }
+  .day{ flex:0 0 auto; width:64px; text-align:center; border:1.5px solid var(--line); border-radius:14px; padding:12px 0; cursor:pointer; background:#fff; transition:.15s; }
+  .day:hover{ border-color:rgba(10,115,230,.4); }
+  .day.on{ border-color:var(--accent); background:var(--accent); color:#fff; }
+  .day .dow{ font-family:var(--font-cond); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .day.on .dow{ color:rgba(255,255,255,.85); }
+  .day .dnum{ font-family:var(--font-display); font-size:26px; line-height:1; margin-top:3px; }
+  .day .mon{ font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  .day.on .mon{ color:rgba(255,255,255,.85); }
+  .slots{ display:flex; flex-wrap:wrap; gap:9px; }
+  .slot{ font-family:var(--font-cond); font-weight:700; font-size:14px; letter-spacing:.02em; color:var(--ink-2); background:var(--bg-2); border:1px solid var(--line); border-radius:30px; padding:9px 16px; cursor:pointer; transition:.15s; }
+  .slot.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .bk-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
+  @media(max-width:560px){ .bk-grid{ grid-template-columns:1fr; } }
+  .inp{ width:100%; font-family:var(--font-body); font-size:15px; color:var(--ink); background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:13px 15px; }
+  .inp:focus{ outline:none; border-color:var(--accent); }
+  .inp--full{ grid-column:1 / -1; }
+  textarea.inp{ min-height:84px; resize:vertical; }
+  .bk-summary{ background:var(--bg-2); border:1px solid var(--line); border-radius:12px; padding:13px 16px; font-size:14px; color:var(--ink-2); margin:6px 0 16px; }
+  .bk-summary b{ color:var(--ink); }
+  .bk-success{ text-align:center; padding:30px 10px; }
+  .bk-success .ok{ width:64px; height:64px; border-radius:50%; background:rgba(16,185,129,.12); color:#10b981; display:grid; place-items:center; font-size:32px; margin:0 auto 16px; }
+  .bk-success h3{ font-family:var(--font-display); font-size:34px; text-transform:uppercase; }
+
+  /* FOOTER */
+  .footer{ position:relative; z-index:1; background:var(--ink); color:#fff; padding:54px 0 30px; margin-top:30px; }
+  .footer__row{ display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; align-items:center; }
+  .footer__row .nav__logo{ color:#fff; } .footer__row .nav__logo span{ color:var(--cyan); }
+  .footer__row a{ color:#fff; } .footer__phone{ font-family:var(--font-cond); font-size:20px; font-weight:700; }
+  .footer__bottom{ border-top:1px solid rgba(255,255,255,.12); margin-top:26px; padding-top:18px; font-size:13px; color:rgba(255,255,255,.72); }
+  .addr-chip{ display:inline-block; margin-top:16px; background:#eef5fc; border:1px solid rgba(10,115,230,.28); color:var(--ink-2); border-radius:30px; padding:9px 17px; font-size:13.5px; font-weight:600; }
+  .addr-chip b{ color:var(--ink); }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav__logo">{{BIZ_NAME}}</a>
+    <div class="nav__links">
+      <a href="/#c1">Services</a><a href="gallery.html">Gallery</a><a href="service-area.html">Service area</a><a href="/#c5">Reviews</a><a href="quote.html" class="on">Get a quote</a><a href="/#c6">Contact</a>
+    </div>
+    <a href="tel:{{PHONE_RAW}}" class="nav__cta">&#9742; {{PHONE_DISPLAY}}</a>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/#c1">Services</a><a href="gallery.html">Gallery</a><a href="service-area.html">Service area</a><a href="/#c5">Reviews</a><a href="quote.html">Get a quote</a><a href="/#c6">Contact</a>
+    <a href="tel:{{PHONE_RAW}}" class="mm-cta">&#9742; {{PHONE_DISPLAY}}</a>
+  </div>
+
+  <div class="page"><div class="wrap"><div class="container">
+
+    <div class="demo-bar"><span class="demo-tag">Demo</span> This quote &amp; booking tool is a live demonstration of the functionality &mdash; no real quote or appointment is created.</div>
+
+    <div class="qhead">
+      <span class="eyebrow">Instant quote &middot; online booking</span>
+      <h1>Get your price.<br><em>Book in 60 seconds.</em></h1>
+      <p>Pick what needs cleaning, see your estimate instantly, and lock in a time — no waiting on a callback. Serving {{CITY}} and the surrounding area.</p>
+      <div class="steps"><span><b>1</b> &nbsp;Pick services</span><span><b>2</b> &nbsp;See your price</span><span><b>3</b> &nbsp;Book a time</span></div>
+    </div>
+
+    <!-- ===== QUOTE GENERATOR ===== -->
+    <section class="sec" id="quote">
+      <div class="quote-grid">
+        <div class="panel">
+          <h2 class="sec__title">Build your <em>quote</em></h2>
+          <p class="sec__sub">Tap each service you want and choose the rough size. Not sure on size? Just pick the closest.</p>
+          <div class="svc" id="svc"></div>
+
+          <span class="field-label">How dirty is it?</span>
+          <div class="cond" id="cond">
+            <button data-cond="light" class="on">Light<small>Recently kept up</small></button>
+            <button data-cond="moderate">Moderate<small>1–3 yrs buildup</small></button>
+            <button data-cond="heavy">Heavy<small>Years of grime</small></button>
+          </div>
+        </div>
+
+        <div class="estimate">
+          <div class="panel">
+            <div class="estimate__lab">Your estimate &middot; demo</div>
+            <div class="estimate__num" id="estNum">$0</div>
+            <div class="estimate__note" id="estNote">Select a service to see your price.</div>
+            <ul class="estimate__lines" id="estLines"><li class="estimate__empty">Nothing selected yet.</li></ul>
+            <button class="btn btn--primary" id="bookBtn" disabled>Book these services &rarr;</button>
+            <a class="btn btn--ghost" href="#quote">Get an exact AI quote from your address</a>
+            <p class="ai-note">The AI quote measures your property from satellite &amp; street view for a to-the-dollar price.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING CALENDAR ===== -->
+    <section class="sec" id="book">
+      <div class="panel">
+        <h2 class="sec__title">Book your <em>appointment</em></h2>
+        <p class="sec__sub">Open 7 days, 7am–7pm. Pick a day and a window that works — we'll confirm by text.</p>
+
+        <div id="bookForm">
+          <span class="field-label">Choose a day</span>
+          <div class="cal__dates" id="calDates"></div>
+
+          <span class="field-label">Choose a time window</span>
+          <div class="slots" id="slots"></div>
+
+          <div class="bk-summary" id="bkSummary" style="display:none"></div>
+
+          <span class="field-label">Your details</span>
+          <div class="bk-grid">
+            <input class="inp" id="bkName" placeholder="Full name" aria-label="Full name" autocomplete="name">
+            <input class="inp" id="bkPhone" placeholder="Mobile phone" aria-label="Mobile phone" inputmode="tel" autocomplete="tel">
+            <input class="inp inp--full" id="bkAddr" placeholder="Service address" aria-label="Service address" autocomplete="street-address">
+            <textarea class="inp inp--full" id="bkNotes" placeholder="Anything we should know? (gate code, problem areas…)" aria-label="Notes"></textarea>
+          </div>
+          <button class="btn btn--primary" id="confirmBtn" style="margin-top:16px" disabled>Confirm my booking</button>
+          <p class="ai-note">Demo only &mdash; confirming won't create a real appointment or send any messages.</p>
+          <p class="ai-note" id="bkErr" style="color:#d33; display:none">Please pick a day, a time, and add your name, phone and address.</p>
+        </div>
+
+        <div class="bk-success" id="bkSuccess" style="display:none">
+          <div class="ok">&#10003;</div>
+          <h3>Demo booking received</h3>
+          <p class="demo-tag" style="display:inline-block;margin:0 auto 4px">Demo</p>
+          <p id="bkSuccessMsg" style="color:var(--ink-2); max-width:46ch; margin:8px auto 0; line-height:1.6"></p>
+        </div>
+      </div>
+    </section>
+
+  </div></div></div>
+
+  <footer class="footer"><div class="container">
+    <div class="footer__row">
+      <span class="nav__logo">{{BIZ_NAME}}</span>
+      <a href="tel:{{PHONE_RAW}}" class="footer__phone">&#9742; {{PHONE_DISPLAY}}</a><a href="mailto:hello@aquaforcewash.com" class="footer__phone" style="font-size:14px;font-weight:600">hello@aquaforcewash.com</a>
+    </div>
+    <div class="footer__bottom">&copy; 2026 {{BIZ_NAME}} Exterior Cleaning &middot; {{CITY}}, {{STATE}} &middot; Licensed and insured.</div>
+  </div></footer>
+
+  <script>
+  (function(){
+    // ---- mobile menu ----
+    var burger=document.getElementById('burger'), mm=document.getElementById('mobileMenu');
+    if(burger) burger.addEventListener('click',function(){ var o=mm.classList.toggle('open'); burger.classList.toggle('open',o); document.body.style.overflow=o?'hidden':''; });
+    mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ mm.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow=''; }); });
+
+    // ---- quote engine (rates from the ProWash tool) ----
+    var SERVICES=[
+      { id:'driveway', label:'Driveway / Concrete', icon:'🚗', rate:0.35, sizes:[['1-car',400],['2-car',700],['Large / 3-car',1050]] },
+      { id:'house',    label:'House Exterior',      icon:'🏠', rate:0.35, sizes:[['1 story',1400],['2 story',2200],['3 story',3000]] },
+      { id:'deck',     label:'Deck / Patio',        icon:'🪵', rate:0.42, sizes:[['Small',200],['Medium',420],['Large',700]] },
+      { id:'fence',    label:'Fence',               icon:'🌿', rate:0.40, sizes:[['Short',300],['Medium',600],['Long',1000]] },
+      { id:'roof',     label:'Roof Soft Wash',      icon:'🏡', rate:0.38, sizes:[['1 story',1600],['2 story',2400]] },
+      { id:'walkway',  label:'Walkways',            icon:'🚶', rate:0.30, sizes:[['Short',150],['Medium',300],['Long',500]] }
+    ];
+    var COND={ light:1, moderate:1.27, heavy:1.57 };
+    var state={ cond:'light', sel:{} };   // sel[id] = sqft
+
+    var svcWrap=document.getElementById('svc');
+    SERVICES.forEach(function(s){
+      var el=document.createElement('div'); el.className='svc__item'; el.dataset.id=s.id;
+      el.innerHTML='<div class="svc__top"><div class="svc__ic">'+s.icon+'</div><div class="svc__name">'+s.label+'</div><div class="svc__check">&#10003;</div></div>'+
+        '<div class="svc__sizes">'+s.sizes.map(function(z,i){ return '<button class="size'+(i===1?' on':'')+'" data-sqft="'+z[1]+'">'+z[0]+'</button>'; }).join('')+'</div>';
+      // default size = middle option (or first if only 2)
+      var def=s.sizes[1]||s.sizes[0];
+      el.querySelector('.svc__top').addEventListener('click',function(){
+        if(state.sel[s.id]!=null){ delete state.sel[s.id]; el.classList.remove('sel'); }
+        else { var on=el.querySelector('.size.on')||el.querySelector('.size'); state.sel[s.id]=+on.dataset.sqft; el.classList.add('sel'); }
+        render();
+      });
+      el.querySelectorAll('.size').forEach(function(b){ b.addEventListener('click',function(e){ e.stopPropagation();
+        el.querySelectorAll('.size').forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on');
+        state.sel[s.id]=+b.dataset.sqft; el.classList.add('sel'); render();
+      }); });
+      svcWrap.appendChild(el);
+    });
+    document.getElementById('cond').querySelectorAll('button').forEach(function(b){ b.addEventListener('click',function(){
+      document.getElementById('cond').querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on');
+      state.cond=b.dataset.cond; render();
+    }); });
+
+    var estNum=document.getElementById('estNum'), estNote=document.getElementById('estNote'),
+        estLines=document.getElementById('estLines'), bookBtn=document.getElementById('bookBtn');
+    function priceFor(s, sqft){ return Math.max(sqft*s.rate*COND[state.cond], 125); }
+    function render(){
+      var ids=Object.keys(state.sel), total=0, html='';
+      if(!ids.length){ estNum.textContent='$0'; estNote.textContent='Select a service to see your price.';
+        estLines.innerHTML='<li class="estimate__empty">Nothing selected yet.</li>'; bookBtn.disabled=true; return; }
+      ids.forEach(function(id){ var s=SERVICES.find(function(x){return x.id===id;}); var p=priceFor(s,state.sel[id]); total+=p;
+        html+='<li><span>'+s.label+'</span><b>$'+Math.round(p)+'</b></li>'; });
+      // show a tidy range around the estimate (±8%)
+      var lo=Math.round(total*0.92/5)*5, hi=Math.round(total*1.08/5)*5;
+      estNum.innerHTML='$'+lo+' <span>&ndash;</span> $'+hi;
+      estNote.textContent=(state.cond.charAt(0).toUpperCase()+state.cond.slice(1))+' soiling · ballpark — final price confirmed on site.';
+      estLines.innerHTML=html; bookBtn.disabled=false;
+    }
+    render();
+
+    // ---- booking calendar ----
+    var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var SLOTS=['7–9am','9–11am','11am–1pm','1–3pm','3–5pm','5–7pm'];
+    var book={ date:null, slot:null };
+    var calDates=document.getElementById('calDates'), slotsWrap=document.getElementById('slots');
+    var today=new Date(); today.setHours(0,0,0,0);
+    for(var i=1;i<=14;i++){ (function(off){
+      var d=new Date(today.getTime()); d.setDate(d.getDate()+off);
+      var el=document.createElement('div'); el.className='day';
+      el.innerHTML='<div class="dow">'+DOW[d.getDay()]+'</div><div class="dnum">'+d.getDate()+'</div><div class="mon">'+MON[d.getMonth()]+'</div>';
+      el.addEventListener('click',function(){ calDates.querySelectorAll('.day').forEach(function(x){x.classList.remove('on');}); el.classList.add('on');
+        book.date={ label:DOW[d.getDay()]+', '+MON[d.getMonth()]+' '+d.getDate(), iso:d.toISOString().slice(0,10) }; updateBk(); });
+      calDates.appendChild(el);
+    })(i); }
+    SLOTS.forEach(function(t){ var el=document.createElement('div'); el.className='slot'; el.textContent=t;
+      el.addEventListener('click',function(){ slotsWrap.querySelectorAll('.slot').forEach(function(x){x.classList.remove('on');}); el.classList.add('on');
+        book.slot=t; updateBk(); }); slotsWrap.appendChild(el); });
+
+    var bkSummary=document.getElementById('bkSummary'), confirmBtn=document.getElementById('confirmBtn'), bkErr=document.getElementById('bkErr');
+    function selectedServicesText(){ var ids=Object.keys(state.sel); if(!ids.length) return ''; return ids.map(function(id){ return SERVICES.find(function(x){return x.id===id;}).label; }).join(', '); }
+    function updateBk(){
+      if(book.date&&book.slot){ var svc=selectedServicesText();
+        bkSummary.style.display='block';
+        bkSummary.innerHTML='<b>'+book.date.label+'</b> &middot; '+book.slot+(svc?(' &middot; '+svc):'')+(estNum.textContent!=='$0'?(' &middot; est. '+estNum.textContent.replace(/<[^>]+>/g,'')):''); }
+      else bkSummary.style.display='none';
+      validate();
+    }
+    var nameI=document.getElementById('bkName'), phoneI=document.getElementById('bkPhone'), addrI=document.getElementById('bkAddr');
+    [nameI,phoneI,addrI].forEach(function(f){ f.addEventListener('input',validate); });
+    function validate(){ var ok=book.date&&book.slot&&nameI.value.trim()&&phoneI.value.trim().length>=7&&addrI.value.trim().length>=5;
+      confirmBtn.disabled=!ok; if(ok) bkErr.style.display='none'; return ok; }
+
+    document.getElementById('bookBtn').addEventListener('click',function(){
+      document.getElementById('book').scrollIntoView({behavior:'smooth'}); });
+
+    confirmBtn.addEventListener('click',function(){
+      if(!validate()){ bkErr.style.display='block'; return; }
+      // PRODUCTION: POST { name, phone, address, notes, date, slot, services, estimate } to the GHL booking webhook.
+      var payload={ name:nameI.value.trim(), phone:phoneI.value.trim(), address:addrI.value.trim(),
+        notes:document.getElementById('bkNotes').value.trim(), date:book.date.iso, window:book.slot,
+        services:Object.keys(state.sel), condition:state.cond, estimate:estNum.textContent.replace(/<[^>]+>/g,'') };
+      try{ console.log('[booking] submit', payload); }catch(e){}
+      document.getElementById('bookForm').style.display='none';
+      var msg=document.getElementById('bkSuccessMsg');
+      msg.textContent='This is a demonstration — no real appointment was created and no messages were sent. On a live site, a booking for '+book.date.label+', '+book.slot+' would land straight in the business calendar.';
+      document.getElementById('bkSuccess').style.display='block';
+      document.getElementById('bkSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  })();
+  </script>
+  <script>
+  /* carry an address checked on the service-area page into the booking form */
+  (function(){
+    var addr=new URLSearchParams(location.search).get('addr');
+    if(!addr) return; addr=addr.trim(); if(!addr) return;
+    function fill(){
+      var f=document.getElementById('bkAddr');
+      if(f){ f.value=addr; f.dispatchEvent(new Event('input',{bubbles:true})); }
+      var head=document.querySelector('.qhead');
+      if(head){ var c=document.createElement('div'); c.className='addr-chip';
+        c.innerHTML='&#128205; Quoting for <b>'+addr.replace(/</g,'&lt;')+'</b> &mdash; change it in the booking step below.';
+        head.appendChild(c); }
+    }
+    if(document.readyState!=='loading') fill(); else document.addEventListener('DOMContentLoaded', fill);
+  })();
+  </script>
+  <script src="nav-cities.js" defer></script>
+  <script src="chat.js" defer></script>
+</body>
+</html>
