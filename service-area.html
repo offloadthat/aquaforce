@@ -453,7 +453,7 @@
         gRes.innerHTML='<div class="geo-ok"><b>&#10003; Good news &mdash; you&rsquo;re in our service area!</b><br>We cover '+area+' and the surrounding LA metro, 7 days a week.'+
           '<div class="geo-cta"><a href="quote.html?addr='+enc+'">Get my quote &rarr;</a><a class="alt" href="quote.html?addr='+enc+'#book">Book a visit</a></div></div>';
       } else {
-        gRes.innerHTML='<div class="geo-no"><b>Hmm &mdash; &ldquo;'+v.replace(/</g,"&lt;")+'&rdquo; looks just outside our usual area.</b><br>We&rsquo;re expanding all the time. Call <a href="tel:+13235550147" style="color:inherit;text-decoration:underline">(323) 555-0147</a> or text your address and we&rsquo;ll confirm on the spot.</div>';
+        gRes.innerHTML='<div class="geo-no"><b>Hmm &mdash; &ldquo;'+v.replace(/</g,"&lt;")+'&rdquo; looks just outside our usual area.</b><br>We&rsquo;re expanding all the time. Call <a href="tel:{{PHONE_RAW}}" style="color:inherit;text-decoration:underline">{{PHONE_DISPLAY}}</a> or text your address and we&rsquo;ll confirm on the spot.</div>';
       }
     }
     if(gChk) gChk.addEventListener('click', check);
