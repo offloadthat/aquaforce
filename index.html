@@ -203,9 +203,25 @@
         <div class="footer__brand">
           <span class="nav__logo">{{BIZ_NAME}}</span>
           <p>Professional exterior cleaning for homes and businesses across {{CITY}}, {{STATE}}.</p>
+          <div style="margin-top:22px">
+            <h2 style="font-family:var(--font-cond);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px">Service Areas</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;line-height:1.5;max-width:400px">
+              <a href="city-santa-monica.html" style="color:rgba(255,255,255,.5)">Santa Monica</a>
+              <a href="city-pasadena.html" style="color:rgba(255,255,255,.5)">Pasadena</a>
+              <a href="city-long-beach.html" style="color:rgba(255,255,255,.5)">Long Beach</a>
+              <a href="city-glendale.html" style="color:rgba(255,255,255,.5)">Glendale</a>
+              <a href="city-burbank.html" style="color:rgba(255,255,255,.5)">Burbank</a>
+              <a href="city-beverly-hills.html" style="color:rgba(255,255,255,.5)">Beverly Hills</a>
+              <a href="city-culver-city.html" style="color:rgba(255,255,255,.5)">Culver City</a>
+              <a href="city-torrance.html" style="color:rgba(255,255,255,.5)">Torrance</a>
+              <a href="city-inglewood.html" style="color:rgba(255,255,255,.5)">Inglewood</a>
+              <a href="city-manhattan-beach.html" style="color:rgba(255,255,255,.5)">Manhattan Beach</a>
+              <a href="service-area.html" style="color:var(--cyan);font-weight:600">All &rarr;</a>
+            </div>
+          </div>
         </div>
         <div class="footer__col"><h2>Services</h2><ul><li><a href="quote.html">Driveways &amp; concrete</a></li><li><a href="quote.html">House &amp; siding</a></li><li><a href="quote.html">Decks, roofs &amp; gutters</a></li></ul></div>
-        <div class="footer__col"><h2>Company</h2><ul><li><a href="service-area.html">About us</a></li><li><a href="gallery.html">Our work</a></li><li><a href="/#c5">Reviews</a></li></ul></div>
+        <div class="footer__col"><h2>Company</h2><ul><li><a href="service-area.html">About us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="quote.html">Get a quote</a></li><li><a href="/#c5">Reviews</a></li></ul></div>
         <div class="footer__col"><h2>Contact</h2><a href="tel:{{PHONE_RAW}}" class="footer__phone">{{PHONE_DISPLAY}}</a><a href="mailto:hello@aquaforcewash.com" class="footer__phone" style="font-size:14px;font-weight:600">hello@aquaforcewash.com</a><p>{{CITY}}, {{STATE}}<br>Open 7 days, 7am to 7pm</p></div>
       </div>
       <div class="footer__bottom"><p>&copy; 2026 {{BIZ_NAME}} Exterior Cleaning. Licensed and insured.</p><p>Reclaim your weekend.</p></div>
@@ -214,7 +230,20 @@
 
   <script>
   (function(){
-    const CARDS = [
+    // Resolve URL params so {{TOKEN}} strings in this block get substituted at runtime
+    var _p = new URLSearchParams(window.location.search);
+    var _BIZ   = _p.get('biz_name')      || 'AquaForce';
+    var _CITY  = _p.get('city')          || 'Los Angeles';
+    var _ST    = _p.get('state')         || 'CA';
+    function _t(s){ return s.replace(/\{\{BIZ_NAME\}\}/g,_BIZ).replace(/\{\{CITY\}\}/g,_CITY).replace(/\{\{STATE\}\}/g,_ST); }
+    var _tok = function(obj){
+      if(typeof obj==='string') return _t(obj);
+      if(Array.isArray(obj)) return obj.map(_tok);
+      if(obj && typeof obj==='object'){var o={};for(var k in obj)o[k]=_tok(obj[k]);return o;}
+      return obj;
+    };
+
+    const CARDS = _tok([
       { ic:'💧', eb:'What we do', t:'Exterior cleaning,<br><em>done right</em>',
         d:'One crew, the right pressure for every surface, and a date you can actually count on — across {{CITY}}.',
         li:['Driveways &amp; concrete — oil, mildew &amp; buildup gone','House &amp; siding soft-wash, safe for every surface','Decks, roofs &amp; gutters restored and clear'] },
@@ -238,7 +267,7 @@
       { ic:'📞', eb:'Get started', t:'Ready to lose<br><em>the grime?</em>',
         d:'Serving {{CITY}} and surrounding areas. Free quotes, no obligation. Reclaim your weekend.',
         li:['Free, no-obligation quotes','Open 7 days, 7am – 7pm','Same-week scheduling'] },
-    ];
+    ]);
     const track=document.getElementById('track'), deck=document.getElementById('deck');
     const cv=document.getElementById('spray'), ctx=cv.getContext('2d');
     const dotsW=document.getElementById('dots'), scrollcue=document.getElementById('scrollcue');
