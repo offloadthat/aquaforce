@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" preserveAspectRatio="none">
+  <defs>
+    <radialGradient id="gA" cx="45%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#2c3a18" stop-opacity="0.55"/>
+      <stop offset="68%" stop-color="#2c3a18" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#2c3a18" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gB" cx="45%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#3b2f1c" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#3b2f1c" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#3b2f1c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gC" cx="45%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#21231b" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#21231b" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#21231b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g>
+    <ellipse cx="90"  cy="70"  rx="120" ry="80"  fill="url(#gC)"/>
+    <ellipse cx="260" cy="40"  rx="90"  ry="55"  fill="url(#gA)"/>
+    <ellipse cx="470" cy="80"  rx="130" ry="70"  fill="url(#gB)"/>
+    <ellipse cx="680" cy="50"  rx="110" ry="75"  fill="url(#gC)"/>
+    <ellipse cx="770" cy="180" rx="95"  ry="120" fill="url(#gA)"/>
+    <ellipse cx="40"  cy="230" rx="100" ry="130" fill="url(#gB)"/>
+    <ellipse cx="200" cy="200" rx="80"  ry="60"  fill="url(#gC)"/>
+    <ellipse cx="400" cy="240" rx="140" ry="90"  fill="url(#gA)"/>
+    <ellipse cx="600" cy="220" rx="100" ry="70"  fill="url(#gB)"/>
+    <ellipse cx="120" cy="400" rx="130" ry="100" fill="url(#gA)"/>
+    <ellipse cx="330" cy="430" rx="110" ry="95"  fill="url(#gC)"/>
+    <ellipse cx="520" cy="410" rx="120" ry="90"  fill="url(#gB)"/>
+    <ellipse cx="710" cy="440" rx="120" ry="110" fill="url(#gA)"/>
+    <ellipse cx="270" cy="540" rx="150" ry="80"  fill="url(#gB)"/>
+    <ellipse cx="560" cy="540" rx="140" ry="80"  fill="url(#gC)"/>
+    <ellipse cx="700" cy="300" rx="70"  ry="50"  fill="url(#gC)"/>
+    <ellipse cx="150" cy="300" rx="60"  ry="44"  fill="url(#gA)"/>
+    <ellipse cx="430" cy="140" rx="55"  ry="40"  fill="url(#gC)"/>
+  </g>
+</svg>
